@@ -1,0 +1,109 @@
+.color-fondo {
+	background-color: #f4f7fc;
+}
+.bg-gray-login {
+	background-color: #f4f7fc;
+}
+.splash {
+  	pointer-events: none;
+  	-webkit-user-select: none;
+  	-moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+.splash .splash-icon {
+    background: #28304e;
+    display: block;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    -webkit-transform: translateX(0%) translateY(-100%);
+            transform: translateX(0%) translateY(-100%); 
+}
+.splash.active .splash-icon {
+    -webkit-transform: translateX(0%) translateY(0%);
+            transform: translateX(0%) translateY(0%); }
+.splash.active .splash-icon::after {
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    display: block;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    content: '';
+    top: 50%;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+    border-top-color: rgba(0, 0, 0, 0.2);
+    -webkit-animation: splash-spinner 1.2s linear infinite;
+            animation: splash-spinner 1.2s linear infinite; 
+}
+
+@-webkit-keyframes splash-spinner {
+  	0% {
+    	-webkit-transform: rotate(0deg);
+        transform: rotate(0deg); 
+    }
+  	100% {
+    	-webkit-transform: rotate(359deg);
+        transform: rotate(359deg); 
+    } 
+}
+@keyframes splash-spinner {
+  	0% {
+    	-webkit-transform: rotate(0deg);
+        transform: rotate(0deg); 
+    }
+  	100% {
+    	-webkit-transform: rotate(359deg);
+        transform: rotate(359deg); 
+    } 
+}
+#root {
+  	height: 100%; 
+}
+.main {
+  width: 100%;
+  min-height: 100vh;
+  min-width: 0;
+  -webkit-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, margin-right 0.3s ease-in-out, right 0.3s ease-in-out;
+  transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, margin-right 0.3s ease-in-out, right 0.3s ease-in-out; 
+}
+@media (max-width: 991.98px) {
+    .main {
+      overflow-y: hidden;
+      width: 100vw;
+      min-width: 100vw; 
+    } 
+}
+.h-100 {
+  height: 100% !important; 
+}
+.mx-auto {
+  margin-right: auto !important; 
+}
+.mx-auto {
+  margin-left: auto !important; 
+}
+.d-table-cell {
+  display: table-cell !important; 
+}
+.align-middle {
+  vertical-align: middle !important; 
+}
+.lead {
+  font-size: 1.17188rem;
+  font-weight: 400; 
+}
+.m-sm-4 {
+    margin: 1.5rem !important; 
+}

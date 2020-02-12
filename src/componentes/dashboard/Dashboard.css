@@ -1,0 +1,85 @@
+.splash {
+  	pointer-events: none;
+  	-webkit-user-select: none;
+  	-moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+.splash .splash-icon {
+    background: #28304e;
+    display: block;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    -webkit-transform: translateX(0%) translateY(-100%);
+            transform: translateX(0%) translateY(-100%); 
+}
+.splash.active .splash-icon {
+    -webkit-transform: translateX(0%) translateY(0%);
+            transform: translateX(0%) translateY(0%); }
+.splash.active .splash-icon::after {
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    display: block;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    content: '';
+    top: 50%;
+    margin-left: -20px;
+    width: 40px;
+    height: 40px;
+    border-top-color: rgba(0, 0, 0, 0.2);
+    -webkit-animation: splash-spinner 1.2s linear infinite;
+            animation: splash-spinner 1.2s linear infinite; 
+}
+
+@-webkit-keyframes splash-spinner {
+  	0% {
+    	-webkit-transform: rotate(0deg);
+        transform: rotate(0deg); 
+    }
+  	100% {
+    	-webkit-transform: rotate(359deg);
+        transform: rotate(359deg); 
+    } 
+}
+@keyframes splash-spinner {
+  	0% {
+    	-webkit-transform: rotate(0deg);
+        transform: rotate(0deg); 
+    }
+  	100% {
+    	-webkit-transform: rotate(359deg);
+        transform: rotate(359deg); 
+    } 
+}
+#root {
+  	height: 100%; 
+}
+.wrapper {
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative; 
+}
+.wrapper:before {
+    width: 100%;
+    height: 264px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #28304e;
+    content: " "; 
+}
