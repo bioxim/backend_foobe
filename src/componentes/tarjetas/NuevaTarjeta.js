@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 import { withRouter } from 'react-router-dom';
@@ -10,8 +10,23 @@ const NuevaTarjeta = (props) => {
 		empresa: '',
 		email: '',
 		telefono: '',
-		url: ''
+		url: '',
+		pais: ''
 	});
+
+	const [ paises, guardarPaises ] = useState([]);
+
+	useEffect( () => {
+		// Query a la API
+		const consultarAPI = async () => {
+
+			const paisesConsulta = await clienteAxios.get('https://restcountries.eu/rest/v2/all');
+
+			guardarPaises(paisesConsulta.data);
+
+		}
+		consultarAPI();
+	}, [paises]);
 
     const agregarTarjeta = async e => {
         e.preventDefault();
@@ -146,6 +161,21 @@ const NuevaTarjeta = (props) => {
 										onChange={leerInformacionTarjeta}
 									/>
 								</div>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="form-group">
+									<label>País</label>
+									<select 
+											name="pais" 
+											className="custom-select"
+											onChange={leerInformacionTarjeta}
+									>
+										<option selected disabled>-- Elige un país --</option>
+										{paises.map(pais =>(
+											<option value={pais.name}>{pais.name}</option>
+										))}
+									</select>
 								</div>
 							</div>
 						</div>

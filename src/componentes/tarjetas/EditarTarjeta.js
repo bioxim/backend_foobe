@@ -21,8 +21,23 @@ function EditarTarjeta (props) {
 		empresa: '',
 		email: '',
 		telefono: '',
-		url: ''
+		url: '',
+		pais: ''
 	});
+
+	const [ paises, guardarPaises ] = useState([]);
+
+	useEffect( () => {
+		// Query a la API
+		const consultarAPI = async () => {
+
+			const paisesConsulta = await clienteAxios.get('https://restcountries.eu/rest/v2/all');
+
+			guardarPaises(paisesConsulta.data);
+
+		}
+		consultarAPI();
+	}, [paises]);
 
 	// useEffect, cuando el componente carga
 	useEffect( () => {
@@ -89,7 +104,7 @@ function EditarTarjeta (props) {
 	// validar el formulario
 	const validarTarjeta = () => {
 		// Destructuring
-		const { nombre, empresa, email, telefono, url } = tarjeta;
+		const { nombre, empresa, email, telefono, url, pais } = tarjeta;
 
 		// Revisar que las propiedades del state tengan log
 		let valido = !nombre.length || !empresa.length || !email.length || !telefono.length || !url.length;
@@ -196,6 +211,23 @@ function EditarTarjeta (props) {
 		                    			value={tarjeta.url}
 									/>
 								</div>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="form-group">
+									<label>
+										País
+									</label>
+									<select 
+											name="pais" 
+											className="custom-select"
+											onChange={actualizarState}
+									>
+										<option value="" selected disabled>-- Elige un país --</option>
+										{paises.map(pais =>(
+											<option value={pais.name}>{pais.name}</option>
+										))}
+									</select>
 								</div>
 							</div>
 						</div>

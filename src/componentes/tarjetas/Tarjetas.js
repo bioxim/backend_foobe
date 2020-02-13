@@ -113,6 +113,9 @@ const Tarjetas = (props) => {
 																Web
 															</th>
 															<th>
+																País
+															</th>
+															<th>
 																Editar
 															</th>
 															<th>

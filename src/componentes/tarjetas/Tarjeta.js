@@ -53,6 +53,9 @@ const Tarjeta = ({tarjetas}) => {
 						{tarjeta.url}
 					</td>
 					<td>
+						{tarjeta.pais}
+					</td>
+					<td>
 						<Link to={`/tarjetas/editar/${tarjeta._id}`} className="mr-1 mb-1 btn btn-warning text-white font-weight-bold">
 							EDITAR
 						</Link>
