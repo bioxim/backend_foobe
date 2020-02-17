@@ -32,6 +32,8 @@ import Busqueda from './componentes/tarjetas/Busqueda';
 /* LIBROS */
 import NuevoLibro from './componentes/libros/NuevoLibro'; 
 import Libros from './componentes/libros/Libros';
+import Librosfisicos from './componentes/librosfisicos/Librosfisicos';
+import EditarLibrofisico from './componentes/librosfisicos/EditarLibrofisico';
 
 /* USUARIOS ADMINISTRADORES */
 
@@ -85,6 +87,8 @@ function App() {
 
                         <Route exact path="/books/nuevo/:id" component={NuevoLibro} />
                         <Route exact path="/books" component={Libros} />
+                        <Route exact path="/librosfisicos/editar/:id" component={EditarLibrofisico} />
+                        <Route exact path="/librosfisicos" component={Librosfisicos} />
 
                         <Route exact path="/crear-admin" component={Usuarios} />
                         <Route exact path="/crear-cuenta" component={Clientes} />

@@ -93,6 +93,11 @@ const Header = () => {
 									Libros
 								</Link>
 							</li>
+							<li className="sidebar-item ">
+								<Link to={"/librosfisicos"} className="sidebar-link">
+									Manejo de PDFs
+								</Link>
+							</li>
 						</ul>
 					</div>
 				</li>

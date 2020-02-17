@@ -10,6 +10,9 @@ import Navegacion from '../layout/auth/Navegacion';
 import FormBuscarTarjeta from './FormBuscarTarjeta';
 import FormCantidadTarjeta from './FormCantidadTarjeta';
 
+import FormBuscarLibroF from './FormBuscarLibroF';
+import FormCantidadLibroF from './FormCantidadLibroF';
+
 import moment from 'moment';
 
 function NuevoLibro(props) {
@@ -19,7 +22,9 @@ function NuevoLibro(props) {
     // state
     const [feria, guardarFeria] = useState({});
     const [busqueda, guardarBusqueda] = useState('');
+    const [busqueda2, guardarBusqueda2] = useState('');
     const [tarjetas, guardarTarjetas] = useState([]);
+    const [librosf, guardarLibrosf] = useState([]);
 
     useEffect(() => {
 
@@ -33,7 +38,9 @@ function NuevoLibro(props) {
         // llamar a la api
         consultarAPI();
 
-    }, [tarjetas, id]);
+    }, [tarjetas, librosf, id]);
+
+    //console.log(librosf)
 
     const buscarTarjeta = async e => {
         e.preventDefault();
@@ -62,9 +69,48 @@ function NuevoLibro(props) {
         }
     }
 
+    const buscarLibrof = async e => {
+        e.preventDefault();
+
+        // obtener los productos de la busqueda
+        const resultadoBusqueda = await clienteAxios.post(`/librosf/busqueda/${busqueda2}`);
+
+        // si no hay resultados una alerta, contrario agregarlo al state
+        if(resultadoBusqueda.data[0]) {
+
+            let librofResultado = resultadoBusqueda.data[0];
+            // agregar la llave "producto" (copia de id)
+            librofResultado.libropdf = resultadoBusqueda.data[0]._id;
+            librofResultado.cantidad = 0;
+
+            // ponerlo en el state
+            guardarLibrosf([...librosf, librofResultado]);
+
+        } else {
+            // no hay resultados
+            Swal.fire({
+                type: 'error',
+                title: 'No Resultados',
+                text: 'No hay resultados'
+            })
+        }
+    }
+
     // almacenar una busqueda en el state
     const leerDatosBusqueda = e => {
         guardarBusqueda( e.target.value );
+    }
+
+    // almacenar una busqueda en el state
+    const leerDatosBusqueda2 = e => {
+        guardarBusqueda2( e.target.value );
+    }
+
+    // Elimina Un pdf del state 
+    const eliminarLibroF = id => {
+        const todosLibrosf = librosf.filter(libropdf => libropdf.libropdf !== id );
+
+        guardarLibrosf(todosLibrosf);
     }
 
     // Elimina Ua tarjeta del state 
@@ -84,7 +130,8 @@ function NuevoLibro(props) {
         // construir el objeto
         const libro = {
             "feria" : id, 
-            "libro" : tarjetas
+            "libro" : tarjetas,
+            "librof" : librosf,
         }
 
         // almacenarlo en la BD
@@ -151,10 +198,36 @@ function NuevoLibro(props) {
 											</h6>
 										</div>
 										<div className="card-body">
+
+											<FormBuscarLibroF 
+							                    buscarLibrof={buscarLibrof}
+							                    leerDatosBusqueda2={leerDatosBusqueda2}
+							                />
+
 											<FormBuscarTarjeta 
 							                    buscarTarjeta={buscarTarjeta}
 							                    leerDatosBusqueda={leerDatosBusqueda}
 							                />
+
+							                
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div className="row">
+								<div className="col">
+									<div className="card">
+										<div className="card-body">
+											{librosf.map((libropdf, index2) => (
+                                                <FormCantidadLibroF
+                                                    key={libropdf.libropdf}
+                                                    libropdf={libropdf}
+                                                    eliminarLibroF={eliminarLibroF}
+                                                    index2={index2}
+                                                />
+						                        
+						                    ))}
 										</div>
 									</div>
 								</div>

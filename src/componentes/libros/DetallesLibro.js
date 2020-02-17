@@ -10,9 +10,9 @@ import moment from 'moment';
 
 function DetallesLibro({libros}, props) {
 
-   const { feria, libro } = libros;
+   const { feria, libro, librof } = libros;
 
-  //console.log(libros);
+   //console.log(libros)
 
     const [auth] = useContext(CRMContext);
 
@@ -59,9 +59,28 @@ function DetallesLibro({libros}, props) {
                   <h5 className="card-title">
                     {libro.feria.nombre}
                   </h5>
-                  <h6 className="card-subtitle text-muted mt-1 pl-2">
+                  <h6 className="card-subtitle text-muted mt-1 pl-2 mr-3">
                     All Personal Cards in {moment(`${libro.feria.fechainicial}`).format('YYYY')} edition
                   </h6>
+                  <p>
+                    {libro.librof.map(libropdf => (
+                      //console.log(libro._id+tarjeta.tarjeta._id)
+                      <ul 
+                        key={libro._id+libropdf.libropdf._id}
+                        className="list-unstyled"
+                      >
+                        <li>
+                          <a 
+                            className="btn btn-sm btn-success text-white"
+                            href={`${process.env.REACT_APP_BACKEND_URL}/${libropdf.libropdf.pdf}`}
+                            target="_blanck"
+                          >
+                            <i class="fas fa-download"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    ))}
+                  </p>
                 </div>
                 
                 <div className="card-body">
@@ -70,14 +89,13 @@ function DetallesLibro({libros}, props) {
                             { libro.feria.imagen ? (
                                           <img src={`${process.env.REACT_APP_BACKEND_URL}/${libro.feria.imagen}`} alt="imagen de la guía de usuarios" width = "200" className="img-fluid"/>
                                         ): null}
-                                        <button  
-                                            className="mr-1 mb-1 btn btn-danger text-white font-weight-bold"
-                                            type="button"
-                                            onClick={() => eliminarLibro(libro._id)}          
-                                          >
-                                            ELIMINAR
-                                          </button>
-
+                            <button  
+                              className="mr-1 mb-1 btn btn-danger text-white font-weight-bold"
+                              type="button"
+                              onClick={() => eliminarLibro(libro._id)}          
+                            >
+                              ELIMINAR
+                            </button>                            
                         </div>
 
                           <div className="react-bootstrap-table">
@@ -101,6 +119,22 @@ function DetallesLibro({libros}, props) {
                                   </th>
                                 </tr>
                               </thead>
+                              <tbody>
+                                {libro.librof.map(libropdf => (
+                                  //console.log(libro._id+tarjeta.tarjeta._id)
+                                  <tr key={libro._id+libropdf.libropdf._id}>
+                                    <td>
+                                      {libropdf.libropdf.nombre}
+                                    </td>
+                                    <td>
+                                      {libropdf.libropdf.fecha}
+                                    </td>
+                                    <td>
+                                      {libropdf.libropdf.contactos}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
                               <tbody>
                                 {libro.libro.map(tarjeta => (
                                   //console.log(libro._id+tarjeta.tarjeta._id)
