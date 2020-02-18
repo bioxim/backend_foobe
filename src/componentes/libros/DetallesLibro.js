@@ -60,7 +60,7 @@ function DetallesLibro({libros}, props) {
                     {libro.feria.nombre}
                   </h5>
                   <h6 className="card-subtitle text-muted mt-1 pl-2 mr-3">
-                    All Personal Cards in {moment(`${libro.feria.fechainicial}`).format('YYYY')} edition
+                    All Business Cards in {moment(`${libro.feria.fechainicial}`).format('YYYY')} edition
                   </h6>
                   <p>
                     {libro.librof.map(libropdf => (
