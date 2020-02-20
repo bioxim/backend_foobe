@@ -40,7 +40,7 @@ const Documentation = ({docs}) => {
 				<tr>
 					<td>
 						{ doc.imagen ? (
-		                    	<img 	src={`${process.env.REACT_APP_BACKEND_URL}/${doc.imagen}`} 
+		                    	<img 	src={`${process.env.REACT_APP_BACKEND_URL}/uploads/docs/${doc.imagen}`} 
 		                    			alt={`imagen de ${doc.titulo}`} 
 		                    			className="img-fluid rounded-circle"
 		                    			width = "50" 
