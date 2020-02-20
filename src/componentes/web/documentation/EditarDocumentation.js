@@ -154,7 +154,7 @@ function EditarDocumentation(props) {
 							<div className="col-md-8">
 								<div className="form-group">
 									{ imagen ? (
-					                        <img src={`${process.env.REACT_APP_BACKEND_URL}/upload/docs/${imagen}`} alt="imagen" width="150" className="img-fluid rounded-circle pb-3" />
+					                        <img src={`${process.env.REACT_APP_BACKEND_URL}/${imagen}`} alt="imagen" width="150" className="img-fluid rounded-circle pb-3" />
 					                    ) : null }
 				                    <input 
 				                        type="file"  
