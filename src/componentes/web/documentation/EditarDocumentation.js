@@ -72,7 +72,7 @@ function EditarDocumentation(props) {
             }
 
             // redireccionar
-            props.history.push('/documentation');
+            props.history.push('/doc');
 
         } catch (error) {
             console.log(error);
