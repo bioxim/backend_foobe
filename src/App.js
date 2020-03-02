@@ -18,6 +18,7 @@ import Changelogs from './componentes/web/changelog/Changelogs';
 import EditarChangelog from './componentes/web/changelog/EditarChangelog';
 import Documentations from './componentes/web/documentation/Documentations';
 import EditarDocumentation from './componentes/web/documentation/EditarDocumentation';
+import Productores from './componentes/web/productores/Productores';
 
 /* FERIAS PARA LIBROS */
 import Ferias from './componentes/ferias/Ferias';
@@ -41,6 +42,8 @@ import Usuarios from './componentes/usuarios/Usuarios';
 
 /* USUARIOS CLIENTES */
 import Clientes from './componentes/usuarios/Clientes';
+import Perfiles from './componentes/perfiles/Perfiles';
+import AltaPerfil from './componentes/objetos/AltaPerfil'; 
 
 // Routing
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -76,6 +79,8 @@ function App() {
 
                         <Route exact path="/doc" component={Documentations} />
                         <Route exact path="/doc/editar/:id" component={EditarDocumentation} />
+
+                        <Route exact path="/productores" component={Productores} />
                         
                         <Route exact path="/tradeshows" component={Ferias} />
                         <Route exact path="/tradeshows/editar/:id" component={EditarFeria} />
@@ -92,6 +97,8 @@ function App() {
 
                         <Route exact path="/crear-admin" component={Usuarios} />
                         <Route exact path="/crear-cuenta" component={Clientes} />
+                        <Route exact path="/clientes-perfiles" component={Perfiles} />
+                        <Route exact path="/clientes/alta/:id" component={AltaPerfil} />
 
         			</Switch>
         		</main>

@@ -21,10 +21,10 @@ const Header = () => {
 			<div className="sidebar-user">
 				<img src="/img/avatar-static.jpg" className="img-fluid rounded-circle mb-2" alt="Linda Miller" />
 				<div className="font-weight-bold">
-					Linda Miller
+					María Ximena Camino
 				</div>
 				<small>
-					Front-end Developer
+					Front-end Developer & SEO
 				</small>
 			</div>
 			<ul className="sidebar-nav">
@@ -55,6 +55,11 @@ const Header = () => {
 							<li className="sidebar-item ">
 								<Link to={"/crear-cuenta"} className="sidebar-link">
 									Clientes
+								</Link>
+							</li>
+							<li className="sidebar-item ">
+								<Link to={"/clientes-perfiles"} className="sidebar-link">
+									Clientes - perfiles
 								</Link>
 							</li>
 							<li className="sidebar-item ">
@@ -124,6 +129,11 @@ const Header = () => {
 								<li className="sidebar-item ">
 									<Link to={"/doc"} className="sidebar-link">
 										Documentation
+									</Link>
+								</li>
+								<li className="sidebar-item ">
+									<Link to={"/productores"} className="sidebar-link">
+										Productores
 									</Link>
 								</li>
 							</ul>

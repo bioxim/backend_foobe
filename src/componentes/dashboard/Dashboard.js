@@ -1,4 +1,6 @@
-import React, { useContext, Fragment } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
+import clienteAxios from '../../config/axios';
 
 import './Dashboard.css';
 import '../layout/auth/Header.css';
@@ -14,7 +16,6 @@ const Dashboard = (props) => {
 	// utilizar valores del context
 	const [auth, guardarAuth] = useContext(CRMContext);
 
-
 	if(!auth.auth) {
 		props.history.push('/login');
 	}
@@ -29,6 +30,7 @@ const Dashboard = (props) => {
 				<Header />
 				<div className="main">
 
+					
 					<Navegacion />
 
 					<div className="content">

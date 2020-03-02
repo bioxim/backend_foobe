@@ -1,105 +1,59 @@
 import React, { useEffect, useState, useContext, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
-import Swal from 'sweetalert2';
 import Spinner from '../layout/Spinner';
+
+import Perfil from './Perfil';
+import NuevoPerfil from './NuevoPerfil';
 
 import '../dashboard/Dashboard.css';
 import '../layout/auth/Header.css';
 import Header from '../layout/auth/Header';
 import Navegacion from '../layout/auth/Navegacion';
 
-import NuevoCliente from './NuevoCliente';
-import Cliente from './Cliente';
 import Pagination from '../Pagination';
-
-import FormBuscarCliente from './FormBuscarCliente';
 
 import { CRMContext } from '../../context/CRMContext';
 
-const Clientes = ({history}) => {
+const Perfiles = (props) => {
 	
-	const [auth, guardarAuth] = useContext(CRMContext);
-
-	const [busqueda, guardarBusqueda] = useState('');
-	const [ clientes, guardarClientes ] = useState([]);
+	const [ perfiles, guardarPerfiles ] = useState([]);
 
 	const [loading, setLoading] = useState(false);
   	const [currentPage, setCurrentPage] = useState(1);
-  	const [postsPerPage] = useState(20);
+  	const [postsPerPage] = useState(25);
 
-  	useEffect( () => {
+	const [auth, guardarAuth] = useContext(CRMContext);
+
+    if(!auth.auth) {
+    	props.history.push('/login');
+    };
+
+    useEffect( () => {
 		// Query a la API
 		const consultarAPI = async () => {
 			
 			setLoading(true);
-			
-			const clientesConsulta = await clienteAxios.get('/clientes');
-			
-			guardarClientes(clientesConsulta.data);
+
+			const perfilesConsulta = await clienteAxios.get('/profile');
+
+			guardarPerfiles(perfilesConsulta.data);
 
 			setLoading(false);
-
 		}
 		consultarAPI();
-	}, [clientes]);
-
-	const buscarCliente = async e => {
-        e.preventDefault();
-
-        // obtener los productos de la busqueda
-        const resultadoBusqueda = await clienteAxios.post(`/clientes/busqueda/${busqueda}`);
-
-        // si no hay resultados una alerta, contrario agregarlo al state
-        if(resultadoBusqueda.data[0]) {
-
-            let clienteResultado = resultadoBusqueda.data[0];
-            // agregar la llave "producto" (copia de id)
-            clienteResultado.cliente = resultadoBusqueda.data[0].email;
-
-
-
-            // ponerlo en el state
-            guardarClientes([...clientes, clienteResultado]);
-
-            Swal.fire({
-                type: 'success',
-                title: 'Se encontró el cliente',
-                text: clienteResultado.cliente
-            })
-
-        } else {
-            // no hay resultados
-            Swal.fire({
-                type: 'error',
-                title: 'No Resultados',
-                text: 'No hay resultados'
-            })
-        }
-    }
-
-    // almacenar una busqueda en el state
-    const leerDatosBusqueda = e => {
-        guardarBusqueda( e.target.value );
-    }
-
-
- 
+	}, [perfiles]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;
 	  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-	  const currentPosts = clientes.slice(indexOfFirstPost, indexOfLastPost);
+	  const currentPosts = perfiles.slice(indexOfFirstPost, indexOfLastPost);
 
 	  // Change page
 	  const paginate = pageNumber => setCurrentPage(pageNumber);
 
 	// spinner de carga
-	if(!clientes.length) return <Spinner />
-
-   
-	 if(!auth.auth) {
-    	history.push('/login');
-    };
+	if(!perfiles.length) return <Spinner />
 
 	return (
 		<Fragment>
@@ -107,37 +61,35 @@ const Clientes = ({history}) => {
 				<div className="splash-icon">
 				</div>
 			</div>
-
 			<div className="wrapper">
 				<Header />
 				<div className="main">
 					<Navegacion />
 					<div className="content">
 						<div className="container-fluid">
-							
 							<div className="header">
 								<h1 className="header-title">
-									Administrador de Usuarios Clientes
+									Perfiles cargados por los clientes
 								</h1>
-								<FormBuscarCliente
-							        buscarCliente={buscarCliente}
-							        leerDatosBusqueda={leerDatosBusqueda}
-							    />
+								<Link to={"/"} className="btn btn-sm btn-warning text-white">
+									<i class="fas fa-search mr-2"></i> Buscar
+								</Link>
 							</div>
-
 							<div className="row">
-								<NuevoCliente />
-							</div>
+								
+								<NuevoPerfil />
 
+							</div>
+							
 							<div className="row">
 								<div className="col">
 									<div className="card mb-3">
 										<div className="card-header">
 											<h5 className="card-title">
-												Listado usuarios clientes de la app
+												Revisión de perfiles
 											</h5>
 											<h6 className="card-subtitle text-muted">
-												Todos los usuarios CLIENTES
+												Los perfiles se pueden editar si incumple con los parámetros establecidos por las políticas de privacidad de FOOBE
 											</h6>
 										</div>
 										<div className="card-body">
@@ -149,19 +101,44 @@ const Clientes = ({history}) => {
 																nombre
 															</th>
 															<th>
-																email
+																tagline
+															</th>
+															<th>
+																profile
+															</th>
+															<th>
+																tel
+															</th>
+															<th>
+																cumple
+															</th>
+															<th>
+																empresa
+															</th>
+															<th>
+																dirección
+															</th>
+															<th>
+																país
+															</th>
+															<th>
+																imagen
+															</th>
+															<th>
+																redes sociales
+															</th>
+															<th>
+																Editar
 															</th>
 															<th>
 																Eliminar
 															</th>
-															<th>
-																Alta Perfil
-															</th>
 														</tr>
 													</thead>
-													<Cliente
+													
+													<Perfil
 
-															clientes={currentPosts} 
+															perfiles={currentPosts} 
 
 													/>
 
@@ -171,19 +148,17 @@ const Clientes = ({history}) => {
 
 										<Pagination
 									        postsPerPage={postsPerPage}
-									        totalPosts={clientes.length}
+									        totalPosts={perfiles.length}
 									        paginate={paginate}
 									    />
 
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
-
 			<div className="redux-toastr" aria-live="assertive">
 				<div>
 					<div className="top-left">
@@ -204,5 +179,4 @@ const Clientes = ({history}) => {
 	)
 
 }
-
-export default Clientes;
+export default Perfiles;

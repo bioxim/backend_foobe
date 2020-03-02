@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 
 const Bienvenida = () => {
+
 	return (
 		<Fragment>
 			<h1 className="header-title">
-				Welcome back, Linda!
+				Bienvenida Administradora!
 			</h1>
 			<p className="header-subtitle">
-				Tools and Contacts for F&B traders.
+				Administración de Foobe.
 			</p>
 		</Fragment>
 	)
