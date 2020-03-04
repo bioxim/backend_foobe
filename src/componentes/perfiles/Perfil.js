@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 
+import moment from 'moment';
+import 'moment/locale/es';
+
 const Perfil = ({perfiles}) => {
 
 	const eliminarPerfil = id => {
@@ -41,6 +44,9 @@ const Perfil = ({perfiles}) => {
 						<small>{perfil.nombre} {perfil.apellido}</small>
 					</td>
 					<td>
+						<small>{perfil.email}</small>
+					</td>
+					<td>
 						<small>{perfil.taglineProfile}</small>
 					</td>
 					<td>
@@ -50,7 +56,7 @@ const Perfil = ({perfiles}) => {
 						<small>{perfil.telefono}</small>
 					</td>
 					<td>
-						<small>{perfil.nacimiento}</small>
+						<small>{moment(`${perfil.nacimiento}`).format('l')}</small>
 					</td>
 					<td>
 						<small>{perfil.empresa}</small>
@@ -107,8 +113,6 @@ const Perfil = ({perfiles}) => {
 						<Link to={`/perfil/editar/${perfil._id}`} className="mr-1 mb-1 btn btn-sm btn-warning text-white font-weight-bold">
 							<i className="far fa-edit"></i>
 						</Link>
-					</td>
-					<td>
 						<button  
 							className="mr-1 mb-1 btn btn-sm btn-danger text-white font-weight-bold"
 							type="button"

@@ -52,6 +52,11 @@ const Tarjeta = ({clientes}) => {
 							ELIMINAR
 						</button>
 					</td>
+					<td>
+						<Link to={`/clientes/alta/${cliente._id}`} className="mr-1 mb-1 btn btn-success text-white font-weight-bold">
+							<i class="fas fa-plus"></i>
+						</Link>	
+					</td>
 				</tr>
 			))}
 		</tbody>	

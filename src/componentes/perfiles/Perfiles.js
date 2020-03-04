@@ -71,7 +71,7 @@ const Perfiles = (props) => {
 								<h1 className="header-title">
 									Perfiles cargados por los clientes
 								</h1>
-								<Link to={"/"} className="btn btn-sm btn-warning text-white">
+								<Link to={"/buscar-perfil"} className="btn btn-sm btn-warning text-white">
 									<i class="fas fa-search mr-2"></i> Buscar
 								</Link>
 							</div>
@@ -101,6 +101,9 @@ const Perfiles = (props) => {
 																nombre
 															</th>
 															<th>
+																email
+															</th>
+															<th>
 																tagline
 															</th>
 															<th>
@@ -128,10 +131,7 @@ const Perfiles = (props) => {
 																redes sociales
 															</th>
 															<th>
-																Editar
-															</th>
-															<th>
-																Eliminar
+																Acciones
 															</th>
 														</tr>
 													</thead>
