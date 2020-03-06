@@ -9,7 +9,22 @@ function NuevoCliente ({history}) {
 	const[cliente, guardarCliente] = useState({
 		nombre: '',
 		email: '',
-		password: ''
+		password: '',
+		apellido: '',
+		taglineProfile: '',
+		profile: '',
+		telefono: '',
+		empresa: '',
+		direccion: '',
+		ciudad: '',
+		estado: '',
+		pais: '',
+		facebook: '',
+		linkedin: '',
+		twitter: '',
+		instagram: '',
+		youtube: '',
+		imagen: ''
 	});
 
 	// leer los datos del formulario
@@ -19,11 +34,8 @@ function NuevoCliente ({history}) {
 			...cliente,
 			[e.target.name] : e.target.value
 		})
-
-		//console.log(cliente);
 	}
 
-	// Añade en la REST API un cliente nuevo
 	const agregarCliente = e => {
 		e.preventDefault();
 		// enviar petición

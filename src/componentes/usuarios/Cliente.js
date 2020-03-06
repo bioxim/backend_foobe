@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 
-const Tarjeta = ({clientes}) => {
+const Cliente = ({clientes}) => {
 
 	const eliminarTarjeta = id => {
 		//console.log('eliminando...', id);
@@ -53,8 +53,9 @@ const Tarjeta = ({clientes}) => {
 						</button>
 					</td>
 					<td>
-						<Link to={`/clientes/alta/${cliente._id}`} className="mr-1 mb-1 btn btn-success text-white font-weight-bold">
-							<i class="fas fa-plus"></i>
+						
+						<Link to={`/detalle/actividad/${cliente._id}`} className="mr-1 mb-1 btn btn-info text-white font-weight-bold">
+							<i class="far fa-eye"></i>
 						</Link>	
 					</td>
 				</tr>
@@ -62,4 +63,4 @@ const Tarjeta = ({clientes}) => {
 		</tbody>	
 	)
 }
-export default Tarjeta;
+export default Cliente;

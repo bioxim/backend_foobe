@@ -57,11 +57,6 @@ const Header = () => {
 								</Link>
 							</li>
 							<li className="sidebar-item ">
-								<Link to={"/clientes-perfiles"} className="sidebar-link">
-									Clientes - perfiles
-								</Link>
-							</li>
-							<li className="sidebar-item ">
 								<Link to={"/crear-admin"} className="sidebar-link">
 										Administradores
 								</Link>
