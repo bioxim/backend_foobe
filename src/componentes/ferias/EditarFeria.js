@@ -32,23 +32,14 @@ function EditarFeria(props) {
 
     // cuando el componente carga
     useEffect(() => {
-
-        if(auth.token !== '') {
+    	
 	        const consultarAPI = async () => {
-	            const feriaConsulta = await clienteAxios.get(`/tradeshows/${id}`, {
-					headers: {
-						Authorization: `Bearer ${auth.token}`
-					}
-				});
+	            const feriaConsulta = await clienteAxios.get(`/tradeshows/${id}`);
 	            guardarFeria(feriaConsulta.data);
 	        }
 
 	        consultarAPI();
-	    } else {
-	    	props.history.push('/login');
-	    }
-
-    }, [id]);
+    }, [id, guardarAuth]);
 
     const editarFeria = async e => {
         e.preventDefault();

@@ -47,7 +47,7 @@ const Changelogs = (props) => {
 		}
 
 		consultarAPI();
-	}, [changelogs]);
+	}, [changelogs, loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;

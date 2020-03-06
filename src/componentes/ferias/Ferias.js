@@ -42,7 +42,7 @@ const Ferias = (props) => {
 
 		}
 		consultarAPI();
-	}, [ferias]);
+	}, [ferias, loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;

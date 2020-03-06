@@ -42,7 +42,7 @@ const Perfiles = (props) => {
 			setLoading(false);
 		}
 		consultarAPI();
-	}, [perfiles]);
+	}, [perfiles, loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;

@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from 'react';
+import React, { useContext } from 'react';
 import { CRMContext } from '../../context/CRMContext';
 import { withRouter } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -9,10 +9,6 @@ import '../layout/notauth/addons/noauth.css';
 import moment from 'moment';
 
 function DetallesLibro({libros}, props) {
-
-   const { feria, libro, librof } = libros;
-
-   //console.log(libros)
 
     const [auth] = useContext(CRMContext);
 

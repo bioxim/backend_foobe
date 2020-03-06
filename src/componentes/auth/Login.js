@@ -1,5 +1,4 @@
 import React, { useState, useContext, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 import { withRouter } from 'react-router-dom';
@@ -45,7 +44,7 @@ function Login(props) {
 			)
 
 			// redireccionar
-			props.history.push('/');
+			props.history.push('/dashboard');
 
 		} catch(error) {
 			//console.log(error);

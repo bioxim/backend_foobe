@@ -32,7 +32,7 @@ const Contenidos = (props) => {
 			guardarContenidos(contenidosConsulta.data);
 		}
 		consultarAPI();
-	}, [contenidos]);
+	}, [contenidos, guardarAuth]);
 
 	// spinner de carga
 	if(!contenidos.length) return <Spinner />

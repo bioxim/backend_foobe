@@ -42,7 +42,7 @@ const Librosfisicos = (props) => {
 			setLoading(false);
 		}
 		consultarAPI();
-	}, [librosf]);
+	}, [librosf, loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;

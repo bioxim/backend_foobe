@@ -47,6 +47,7 @@ import EditarPerfil from './componentes/perfiles/EditarPerfil';
 import BusquedaPerfil from './componentes/perfiles/BusquedaPerfil';
 
 import AltaPerfil from './componentes/objetos/AltaPerfil'; 
+import ObjetosPerfil from './componentes/objetos/ObjetosPerfil';
 
 // Routing
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -102,7 +103,9 @@ function App() {
                         <Route exact path="/crear-cuenta" component={Clientes} />
                         <Route exact path="/clientes-perfiles" component={Perfiles} />
                         <Route exact path="/perfil/editar/:id" component={EditarPerfil} />
-                        <Route exact path="/buscar-perfil" component={BusquedaPerfil} /> 
+                        <Route exact path="/buscar-perfil" component={BusquedaPerfil} />
+
+                        <Route exact path="/detalle/perfiles" component={ObjetosPerfil} /> 
 
                         <Route exact path="/clientes/alta/:id" component={AltaPerfil} />
 

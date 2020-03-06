@@ -42,7 +42,7 @@ const Tarjetas = (props) => {
 			setLoading(false);
 		}
 		consultarAPI();
-	}, [tarjetas]);
+	}, [tarjetas, loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;

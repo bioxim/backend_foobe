@@ -1,15 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 import { withRouter } from 'react-router-dom';
 
-// importar el Context
-import { CRMContext } from '../../context/CRMContext';
-
 function NuevoCliente ({history}) {
-
-	// utilizar valores del context
-	const [auth, guardarAuth] = useContext(CRMContext);
 
 	//cliente: state, guardarCliente: función para guardar el state
 	const[cliente, guardarCliente] = useState({

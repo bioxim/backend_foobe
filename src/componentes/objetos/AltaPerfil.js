@@ -43,7 +43,7 @@ function AltaPerfil(props) {
 
             let perfilResultado = resultadoBusqueda.data[0];
             // agregar la llave "producto" (copia de id)
-            perfilResultado.perfil = resultadoBusqueda.data[0]._id;
+            perfilResultado.detalleperfil = resultadoBusqueda.data[0]._id;
 
             // ponerlo en el state
             guardarPerfiles([...perfiles, perfilResultado]);
@@ -63,7 +63,7 @@ function AltaPerfil(props) {
     }
 
     const eliminarPerfilObjeto = id => {
-        const todosPerfiles = perfiles.filter(perfil => perfil.perfil !== id );
+        const todosPerfiles = perfiles.filter(detalleperfil => detalleperfil.detalleperfil !== id );
 
         guardarPerfiles(todosPerfiles);
     }
@@ -160,10 +160,10 @@ function AltaPerfil(props) {
 								<div className="col">
 									<div className="card">
 										<div className="card-body">
-											{perfiles.map((perfil, index) => (
+											{perfiles.map((detalleperfil, index) => (
 						                        <FormCantidadPerfil
-						                            key={perfil.perfil}
-						                            perfil={perfil}
+						                            key={detalleperfil.detalleperfil}
+						                            detalleperfil={detalleperfil}
 						                            eliminarPerfilObjeto={eliminarPerfilObjeto}
 						                            index={index}
 						                        />

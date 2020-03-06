@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 
-const Tarjeta = ({administradores}) => {
+const Usuario = ({administradores}) => {
 
 	const eliminarTarjeta = id => {
 		//console.log('eliminando...', id);
@@ -57,4 +56,4 @@ const Tarjeta = ({administradores}) => {
 		</tbody>	
 	)
 }
-export default Tarjeta;
+export default Usuario;

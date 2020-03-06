@@ -11,8 +11,6 @@ import FormFeriasEncontradas from './FormFeriasEncontradas';
 
 import { CRMContext } from '../../context/CRMContext';
 
-import moment from 'moment';
-
 function BusquedaFerias(props) {
 	// extraer ID de la feria
     const { id } = props.match.params;
@@ -40,7 +38,7 @@ function BusquedaFerias(props) {
         // llamar a la api
         consultarAPI();
 
-    }, [tarjetas]);
+    }, [tarjetas, guardarAuth]);
 
     useEffect(() => {
 

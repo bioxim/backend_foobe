@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 
 import { CRMContext } from '../../context/CRMContext';
@@ -43,22 +43,13 @@ function EditarLibrofisico(props) {
 	// cuando el componente carga
     useEffect(() => {
 
-        if(auth.token !== '') {
 	        const consultarAPI = async () => {
-	            const librofConsulta = await clienteAxios.get(`/librosfisicos/${id}`, {
-					headers: {
-						Authorization: `Bearer ${auth.token}`
-					}
-				});
+	            const librofConsulta = await clienteAxios.get(`/librosfisicos/${id}`);
 	            guardarLibrof(librofConsulta.data);
 	        }
 
 	        consultarAPI();
-	    } else {
-	    	props.history.push('/login');
-	    }
-
-    }, [id]);
+    }, [id, guardarAuth]);
 
     const editarLibrof = async e => {
         e.preventDefault();

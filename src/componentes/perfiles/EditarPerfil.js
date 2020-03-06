@@ -54,35 +54,15 @@ function EditarPerfil(props) {
 
 	useEffect( () => {
 
-		if(auth.token !== '') {
 			const consultarAPI = async () => {
-				const perfilConsulta = await clienteAxios.get(`/profile/${id}`, {
-					headers: {
-						Authorization: `Bearer ${auth.token}`
-					}
-				});
+				const perfilConsulta = await clienteAxios.get(`/profile/${id}`);
 				//colocar en el state los datos
 				datosPerfil(perfilConsulta.data);
 			}
 
 			consultarAPI();
-		} else {
-			props.history.push('/login');
-		}
-
-	}, [id]);
-
-	// leer los datos del formulario
-	const actualizarState = e => {
-
-		datosPerfil({
-			// obtener una copia del state actual
-			...perfil,
-			[e.target.name] : e.target.value
-		})
-
-		//console.log(perfil);
-	}
+			
+	}, [id, guardarAuth]);
 
 	const editarPerfil = async e => {
         e.preventDefault();

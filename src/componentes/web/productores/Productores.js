@@ -41,7 +41,7 @@ const Productores = (props) => {
 			setLoading(false);
 		}
 		consultarAPI();
-	}, [productores]);
+	}, [productores,loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;

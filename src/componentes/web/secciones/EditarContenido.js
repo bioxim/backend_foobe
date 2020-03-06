@@ -22,23 +22,15 @@ function EditarContenido (props) {
 
 	// useEffect, cuando el componente carga
 	useEffect( () => {
-		// Query a la API
-		if(auth.token !== '') {
+
 			const consultarAPI = async () => {
-				const contenidoConsulta = await clienteAxios.get(`/contenidos/${id}`, {
-					headers: {
-						Authorization: `Bearer ${auth.token}`
-					}
-				});
+				const contenidoConsulta = await clienteAxios.get(`/contenidos/${id}`);
 				//colocar en el state los datos
 				datosContenido(contenidoConsulta.data);
 			}
 			
 			consultarAPI();
-		} else {
-			props.history.push('/login');
-		}
-	}, [id]);
+	}, [id, guardarAuth]);
 
 	// leer los datos del formulario
 	const actualizarState = e => {

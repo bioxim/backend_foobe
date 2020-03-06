@@ -29,24 +29,14 @@ function EditarChangelog (props) {
 	// useEffect, cuando el componente carga
 	useEffect( () => {
 
-		if(auth.token !== '') {
-			// Query a la API
 			const consultarAPI = async () => {
-				const changelogConsulta = await clienteAxios.get(`/changelog/${id}`, {
-					headers: {
-						Authorization: `Bearer ${auth.token}`
-					}
-				});
+				const changelogConsulta = await clienteAxios.get(`/changelog/${id}`);
 				//colocar en el state los datos
 				datosLogs(changelogConsulta.data);
 			}
 
 			consultarAPI();
-		} else {
-			props.history.push('/login');
-		}
-
-	}, [id]);
+	}, [id, guardarAuth]);
 
 	// leer los datos del formulario
 	const actualizarState = e => {

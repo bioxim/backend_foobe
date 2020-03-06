@@ -1,14 +1,13 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Header.css';
-import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../../context/CRMContext';
 
 
 const Header = () => {
 
-	const [auth, guardarAuth] = useContext(CRMContext);
+	const [auth] = useContext(CRMContext);
 
     if(!auth.auth) return null;
 

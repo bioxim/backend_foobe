@@ -11,8 +11,6 @@ import FormPerfilesEncontradas from './FormPerfilesEncontradas';
 
 import { CRMContext } from '../../context/CRMContext';
 
-import moment from 'moment';
-
 function BusquedaPerfil(props) {
 	// extraer ID de la feria
     const { id } = props.match.params;
@@ -40,7 +38,7 @@ function BusquedaPerfil(props) {
         // llamar a la api
         consultarAPI();
 
-    }, [perfiles]);
+    }, [perfiles, guardarAuth]);
 
     useEffect(() => {
 

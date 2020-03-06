@@ -6,47 +6,45 @@ import Header from '../layout/auth/Header';
 import Navegacion from '../layout/auth/Navegacion';
 import Spinner from '../layout/Spinner';
 
-import DetallesLibro from './DetallesLibro';
+import DetallesObjeto from './DetallesObjeto';
 
 import Pagination from '../Pagination';
 
 import { CRMContext } from '../../context/CRMContext';
 
-function Libros(props) {
+function ObjetosPerfil(props) {
 
-	const [libros, guardarLibros] = useState([]);
+	const [objetos, guardarObjetos] = useState([]);
 
 	const [loading, setLoading] = useState(false);
   	const [currentPage, setCurrentPage] = useState(1);
-  	const [postsPerPage] = useState(1);
+  	const [postsPerPage] = useState(25);
 
 	// utilizar valores del context
 	const [auth, guardarAuth] = useContext(CRMContext);
-	
-    useEffect(() => {
+
+	useEffect(() => {
 
         	const consultarAPI = async () => {
 
         	
 		            setLoading(true);
 
-		            const resultado = await clienteAxios.get('/books');
-		            guardarLibros(resultado.data);
+		            const resultado = await clienteAxios.get('/activity');
+		            guardarObjetos(resultado.data);
 
 		            setLoading(false);
-
-	      
 
 			}
 
         	consultarAPI();
 
-	}, [libros, loading, guardarAuth]);
+	}, [objetos, loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;
 	  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-	  const currentPosts = libros.slice(indexOfFirstPost, indexOfLastPost);
+	  const currentPosts = objetos.slice(indexOfFirstPost, indexOfLastPost);
 
 	  // Change page
 	  const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -55,9 +53,9 @@ function Libros(props) {
 		props.history.push('/login');
 	}
 
-    if(!libros.length) return <Spinner />
+    if(!objetos.length) return <Spinner />
 
-	return (
+    return (
 		<Fragment>
 			<div className="splash">
 				<div className="splash-icon">
@@ -71,18 +69,18 @@ function Libros(props) {
 						<div className="container-fluid">
 							<div className="header">
 								<h1 className="header-title">
-									Book of Fairs
+									Clientes - Perfiles
 								</h1>
 							</div>
 							
-				            <DetallesLibro
-				                libros={currentPosts} 
+				            <DetallesObjeto
+				                objetos={currentPosts} 
 				            />
 
 							<div className="row mt-1 mb-3">
 								<Pagination
 									postsPerPage={postsPerPage}
-									totalPosts={libros.length}
+									totalPosts={objetos.length}
 									paginate={paginate}
 								/>
 							</div>
@@ -109,6 +107,6 @@ function Libros(props) {
 			</div>		
 		</Fragment>
 	)
-}
-export default Libros;
 
+}
+export default ObjetosPerfil;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
 import Swal from 'sweetalert2';
 import Spinner from '../layout/Spinner';
@@ -41,7 +42,7 @@ const Clientes = ({history}) => {
 
 		}
 		consultarAPI();
-	}, [clientes]);
+	}, [clientes, loading, guardarAuth]);
 
 	const buscarCliente = async e => {
         e.preventDefault();
@@ -133,9 +134,14 @@ const Clientes = ({history}) => {
 								<div className="col">
 									<div className="card mb-3">
 										<div className="card-header">
-											<h5 className="card-title">
-												Listado usuarios clientes de la app
-											</h5>
+											<div className="d-flex justify-content-between">
+												<h5 className="card-title">
+													Listado usuarios clientes de la app
+												</h5>
+												<Link to={"/detalle/perfiles"} className="mr-1 mb-1 btn btn-info text-white font-weight-bold">
+													<i class="far fa-eye"></i>
+												</Link>	
+											</div>											
 											<h6 className="card-subtitle text-muted">
 												Todos los usuarios CLIENTES
 											</h6>
@@ -155,7 +161,7 @@ const Clientes = ({history}) => {
 																Eliminar
 															</th>
 															<th>
-																Alta Perfil
+																Alta
 															</th>
 														</tr>
 													</thead>

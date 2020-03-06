@@ -42,23 +42,14 @@ function EditarTarjeta (props) {
 	// useEffect, cuando el componente carga
 	useEffect( () => {
 
-		if(auth.token !== '') {
 			const consultarAPI = async () => {
-				const tarjetaConsulta = await clienteAxios.get(`/tarjetas/${id}`, {
-					headers: {
-						Authorization: `Bearer ${auth.token}`
-					}
-				});
+				const tarjetaConsulta = await clienteAxios.get(`/tarjetas/${id}`);
 				//colocar en el state los datos
 				datosTarjeta(tarjetaConsulta.data);
 			}
 
 			consultarAPI();
-		} else {
-			props.history.push('/login');
-		}
-
-	}, [id]);
+	}, [id, guardarAuth]);
 
 	// leer los datos del formulario
 	const actualizarState = e => {
@@ -104,7 +95,7 @@ function EditarTarjeta (props) {
 	// validar el formulario
 	const validarTarjeta = () => {
 		// Destructuring
-		const { nombre, empresa, email, telefono, url, pais } = tarjeta;
+		const { nombre, empresa, email, telefono, url } = tarjeta;
 
 		// Revisar que las propiedades del state tengan log
 		let valido = !nombre.length || !empresa.length || !email.length || !telefono.length || !url.length;

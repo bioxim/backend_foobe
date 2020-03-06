@@ -41,7 +41,7 @@ const Usuarios = ({history}) => {
 
 		}
 		consultarAPI();
-	}, [administradores]);
+	}, [administradores, loading, guardarAuth]);
 
 	const buscarCliente = async e => {
         e.preventDefault();

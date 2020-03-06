@@ -28,22 +28,13 @@ function EditarDocumentation(props) {
 	// cuando el componente carga
     useEffect(() => {
 
-        if(auth.token !== '') {
 	        const consultarAPI = async () => {
-	            const docConsulta = await clienteAxios.get(`/doc/${id}`, {
-					headers: {
-						Authorization: `Bearer ${auth.token}`
-					}
-				});
+	            const docConsulta = await clienteAxios.get(`/doc/${id}`);
 	            guardarDoc(docConsulta.data);
 	        }
 
 	        consultarAPI();
-	    } else {
-	    	props.history.push('/login');
-	    }
-
-    }, [id]);
+    }, [id, guardarAuth]);
 
     const editarDoc = async e => {
         e.preventDefault();

@@ -42,7 +42,7 @@ const Documentations = (props) => {
 			setLoading(false);
 		}
 		consultarAPI();
-	}, [docs]);
+	}, [docs, loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;

@@ -2,7 +2,7 @@ import React from 'react';
 
 function FormTarjetasEncontradas (props) {
 
-    const { tarjeta, index } = props;
+    const { tarjeta } = props;
 
 	return(
 		<div className="col-12">

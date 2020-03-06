@@ -8,7 +8,7 @@ import 'moment/locale/es';
 
 function FormTarjetasEncontradas (props) {
 
-    const { perfil, index } = props;
+    const { perfil } = props;
 
     const eliminarPerfil = id => {
         
