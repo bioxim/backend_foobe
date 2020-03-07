@@ -10,7 +10,6 @@ function NuevoCliente ({history}) {
 		nombre: '',
 		email: '',
 		password: '',
-		apellido: '',
 		taglineProfile: '',
 		profile: '',
 		telefono: '',
@@ -68,7 +67,7 @@ function NuevoCliente ({history}) {
 	// validar el formulario
 	const validarCliente = () => {
 		// Destructuring
-		const { nombre, email, password } = cliente;
+		const { nombre, email, password, taglineProfile } = cliente;
 
 		// Revisar que las propiedades del state tengan contenido
 		let valido = !nombre.length || !email.length || !password.length
@@ -126,6 +125,19 @@ function NuevoCliente ({history}) {
 									<input 
 										name="password"
 										type="password" 
+										className="form-control"
+										onChange={actualizarState} 
+									/>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="form-group">
+									<label className="font-weight-bold">
+										Tagline 
+									</label>
+									<input 
+										name="taglineProfile"
+										type="text" 
 										className="form-control"
 										onChange={actualizarState} 
 									/>

@@ -1,12 +1,31 @@
-import React, { Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
+import clienteAxios from '../../../config/axios';
 
-const Bienvenida = () => {
+const Bienvenida = (props) => {
+
+	const { id } = props;
+
+	const [admin, guardarAdmin] = useState([]);
+
+	useEffect(() => {
+    	
+	        const consultarAPI = async () => {
+	            const adminConsulta = await clienteAxios.get(`/administradores/${id}`);
+	            guardarAdmin(adminConsulta.data);
+	        }
+
+	        consultarAPI();
+    }, [id, admin]);
 
 	return (
 		<Fragment>
-			<h1 className="header-title">
-				Bienvenida Administradora!
-			</h1>
+			{admin.map(adm => (
+			<div>
+				<h1 className="header-title">
+					Bienvenida {adm.nombre}!
+				</h1>
+			</div>
+			))}
 			<p className="header-subtitle">
 				Administración de Foobe.
 			</p>

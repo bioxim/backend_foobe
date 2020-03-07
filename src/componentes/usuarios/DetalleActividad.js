@@ -24,7 +24,6 @@ function EditarPerfil(props) {
 
 	const [perfil, datosPerfil] = useState({
 		nombre: '',
-		apellido: '',
 		email: '',
 		taglineProfile: '',
 		profile: '',
@@ -42,10 +41,12 @@ function EditarPerfil(props) {
 		youtube: ''
 	});
 
+	const [archivo, guardarArchivo] = useState('');
+
 	useEffect( () => {
 
 			const consultarAPI = async () => {
-				const perfilConsulta = await clienteAxios.get(`/perfilampliado/${id}`);
+				const perfilConsulta = await clienteAxios.get(`/clientes/${id}`);
 				//colocar en el state los datos
 				datosPerfil(perfilConsulta.data);
 			}
@@ -60,7 +61,6 @@ function EditarPerfil(props) {
         // crear un formdata
         const formData = new FormData();
         formData.append('nombre', perfil.nombre);
-        formData.append('apellido', perfil.apellido);
         formData.append('email', perfil.email);
         formData.append('taglineProfile', perfil.taglineProfile);
         formData.append('profile', perfil.profile);
@@ -79,7 +79,7 @@ function EditarPerfil(props) {
 
         // almacenarlo en la BD
         try {
-            const res = await clienteAxios.put(`/perfilampliado/${id}`, formData, {
+            const res = await clienteAxios.put(`/clientes/editar/${id}`, formData, {
                 headers: {
                     'Content-Type' : 'multipart/form-data'
                 }
@@ -95,7 +95,7 @@ function EditarPerfil(props) {
             }
 
             // redireccionar
-            props.history.push('/dashboard');
+            props.history.push('/crear-cuenta');
 
         } catch (error) {
             console.log(error);
@@ -179,26 +179,6 @@ function EditarPerfil(props) {
 												<div className="col-md-6">
 													<div className="form-group">
 														<label>
-															Apellidos del cliente
-														</label>
-														<input 
-															name="apellido" 
-															placeholder="Apellidos" 
-															type="text" 
-															className="form-control"
-															onChange={leerInformacionPerfil}
-					                        				defaultValue={apellido}
-														/>
-													</div>
-												</div>
-											
-											</div>
-
-											<div className="form-row mb-3">	
-
-												<div className="col-md-6">
-													<div className="form-group">
-														<label>
 															Email del cliente
 														</label>
 														<input 
@@ -211,6 +191,10 @@ function EditarPerfil(props) {
 														/>
 													</div>
 												</div>
+											
+											</div>
+
+											<div className="form-row mb-3">	
 
 												<div className="col-md-6">
 													<div className="form-group">
@@ -252,7 +236,7 @@ function EditarPerfil(props) {
 													<div className="form-group">
 														{ imagen ? (
 										                    <img src={`${process.env.REACT_APP_BACKEND_URL}/${imagen}`} alt="imagen" width="150" className="img-fluid rounded-circle pb-3" />
-										                ) : null }
+										                ) : <p>No hay imagen colgada</p> }
 										            </div>
 												</div>
 											
