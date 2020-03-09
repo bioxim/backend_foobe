@@ -1,31 +1,21 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import clienteAxios from '../../../config/axios';
+import React, { useContext, Fragment } from 'react';
+import { CRMContext } from '../../../context/CRMContext';
 
 const Bienvenida = (props) => {
 
-	const { id } = props;
-
-	const [admin, guardarAdmin] = useState([]);
-
-	useEffect(() => {
-    	
-	        const consultarAPI = async () => {
-	            const adminConsulta = await clienteAxios.get(`/administradores/${id}`);
-	            guardarAdmin(adminConsulta.data);
-	        }
-
-	        consultarAPI();
-    }, [id, admin]);
+	const [auth] = useContext(CRMContext);
+	const { credenciales } = auth;
+	const { email } = credenciales;
 
 	return (
 		<Fragment>
-			{admin.map(adm => (
+			
 			<div>
 				<h1 className="header-title">
-					Bienvenida {adm.nombre}!
+					Administradora {email}!
 				</h1>
 			</div>
-			))}
+
 			<p className="header-subtitle">
 				Administración de Foobe.
 			</p>

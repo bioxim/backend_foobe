@@ -41,8 +41,6 @@ function EditarPerfil(props) {
 		youtube: ''
 	});
 
-	const [archivo, guardarArchivo] = useState('');
-
 	useEffect( () => {
 
 			const consultarAPI = async () => {
@@ -115,7 +113,7 @@ function EditarPerfil(props) {
         })
     }
 
-    const { nombre, imagen, apellido, email, taglineProfile, profile, telefono, empresa, direccion, ciudad, estado, pais, facebook, linkedin, twitter, instagram, youtube } = perfil;
+    const { nombre, imagen, email, taglineProfile, profile, telefono, empresa, direccion, ciudad, estado, pais, facebook, linkedin, twitter, instagram, youtube } = perfil;
 
     if(!perfil) return <Spinner />
 

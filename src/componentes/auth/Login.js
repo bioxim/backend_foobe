@@ -11,8 +11,6 @@ function Login(props) {
 	// Auth y token
 	const [auth, guardarAuth] = useContext(CRMContext);
 
-	//console.log(auth);
-
 	// State con los datos del formulario
 	const [credenciales, guardarCredenciales] = useState({});
 
@@ -28,12 +26,14 @@ function Login(props) {
 
 			// extraer el token y colocarlo en el localstorage
 			const { token } = respuesta.data;
+			
 			localStorage.setItem('token', token);
 
 			// colocarlo en el state
 			guardarAuth({
 				token,
-				auth: true
+				auth: true,
+				credenciales
 			})
 
 			// alerta

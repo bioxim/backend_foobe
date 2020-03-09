@@ -70,7 +70,7 @@ function NuevoCliente ({history}) {
 		const { nombre, email, password, taglineProfile } = cliente;
 
 		// Revisar que las propiedades del state tengan contenido
-		let valido = !nombre.length || !email.length || !password.length
+		let valido = !nombre.length || !email.length || !password.length || !taglineProfile.length
 
 		// Return true o false
 		return valido;
