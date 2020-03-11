@@ -19,6 +19,7 @@ import EditarChangelog from './componentes/web/changelog/EditarChangelog';
 import Documentations from './componentes/web/documentation/Documentations';
 import EditarDocumentation from './componentes/web/documentation/EditarDocumentation';
 import Productores from './componentes/web/productores/Productores';
+import Newsletters from './componentes/web/newsletter/Newsletters';
 
 /* FERIAS PARA LIBROS */
 import Ferias from './componentes/ferias/Ferias';
@@ -42,7 +43,6 @@ import Usuarios from './componentes/usuarios/Usuarios';
 
 /* USUARIOS CLIENTES */
 import Clientes from './componentes/usuarios/Clientes';
-import DetalleActividad from './componentes/usuarios/DetalleActividad';
 
 // Routing
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -80,6 +80,8 @@ function App() {
                         <Route exact path="/doc/editar/:id" component={EditarDocumentation} />
 
                         <Route exact path="/productores" component={Productores} />
+
+                        <Route exact path="/manejo-newsletters" component={Newsletters} />
                         
                         <Route exact path="/tradeshows" component={Ferias} />
                         <Route exact path="/tradeshows/editar/:id" component={EditarFeria} />
@@ -96,7 +98,6 @@ function App() {
 
                         <Route exact path="/crear-admin" component={Usuarios} />
                         <Route exact path="/crear-cuenta" component={Clientes} />
-                        <Route exact path="/detalle/actividad/:id" component={DetalleActividad} />
 
         			</Switch>
         		</main>

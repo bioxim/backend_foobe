@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
+
+import moment from 'moment';
 
 const Cliente = ({clientes}) => {
 
@@ -38,6 +39,9 @@ const Cliente = ({clientes}) => {
 			{clientes.map(cliente => (
 				<tr>
 					<td>
+						{moment(`${cliente.registro}`).format('l')}
+					</td>
+					<td>
 						{cliente.nombre}
 					</td>
 					<td>
@@ -51,12 +55,6 @@ const Cliente = ({clientes}) => {
 						>
 							ELIMINAR
 						</button>
-					</td>
-					<td>
-						
-						<Link to={`/detalle/actividad/${cliente._id}`} className="mr-1 mb-1 btn btn-info text-white font-weight-bold">
-							<i class="far fa-eye"></i>
-						</Link>	
 					</td>
 				</tr>
 			))}

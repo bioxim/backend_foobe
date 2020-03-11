@@ -130,6 +130,11 @@ const Header = () => {
 										Productores
 									</Link>
 								</li>
+								<li className="sidebar-item ">
+									<Link to={"/manejo-newsletters"} className="sidebar-link">
+										Correos Newsletter
+									</Link>
+								</li>
 							</ul>
 						</div>
 				</li>

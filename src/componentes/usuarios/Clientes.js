@@ -148,6 +148,9 @@ const Clientes = ({history}) => {
 													<thead>
 														<tr>
 															<th>
+																registro
+															</th>
+															<th>
 																nombre
 															</th>
 															<th>
@@ -155,9 +158,6 @@ const Clientes = ({history}) => {
 															</th>
 															<th>
 																Eliminar
-															</th>
-															<th>
-																Ampliar
 															</th>
 														</tr>
 													</thead>
