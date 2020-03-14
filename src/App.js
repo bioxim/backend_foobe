@@ -21,6 +21,10 @@ import EditarDocumentation from './componentes/web/documentation/EditarDocumenta
 import Productores from './componentes/web/productores/Productores';
 import Newsletters from './componentes/web/newsletter/Newsletters';
 
+/* CRUD DE LISTADO DE PRODUCTOS POR CODIGO HS6 */
+import Productos from './componentes/hs6/Productos';
+import EditarProducto from './componentes/hs6/EditarProducto';
+
 /* FERIAS PARA LIBROS */
 import Ferias from './componentes/ferias/Ferias';
 import EditarFeria from './componentes/ferias/EditarFeria';
@@ -78,6 +82,9 @@ function App() {
 
                         <Route exact path="/doc" component={Documentations} />
                         <Route exact path="/doc/editar/:id" component={EditarDocumentation} />
+
+                        <Route exact path="/productoshs6" component={Productos} />
+                        <Route exact path="/producto/editar/:id" component={EditarProducto} />
 
                         <Route exact path="/productores" component={Productores} />
 

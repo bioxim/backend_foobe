@@ -135,6 +135,11 @@ const Header = () => {
 										Correos Newsletter
 									</Link>
 								</li>
+								<li className="sidebar-item ">
+									<Link to={"/productoshs6"} className="sidebar-link">
+										Código HS6
+									</Link>
+								</li>
 							</ul>
 						</div>
 				</li>
