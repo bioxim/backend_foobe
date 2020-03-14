@@ -25,6 +25,10 @@ import Newsletters from './componentes/web/newsletter/Newsletters';
 import Productos from './componentes/hs6/Productos';
 import EditarProducto from './componentes/hs6/EditarProducto';
 
+/* CRUD DE EVENTOS CALENDARIO */
+import Calendarios from './componentes/calendario/Calendarios';
+import EditarCalendario from './componentes/calendario/EditarCalendario';
+
 /* FERIAS PARA LIBROS */
 import Ferias from './componentes/ferias/Ferias';
 import EditarFeria from './componentes/ferias/EditarFeria';
@@ -85,6 +89,9 @@ function App() {
 
                         <Route exact path="/productoshs6" component={Productos} />
                         <Route exact path="/producto/editar/:id" component={EditarProducto} />
+
+                        <Route exact path="/calendario" component={Calendarios} />
+                        <Route exact path="/calendario/editar/:id" component={EditarCalendario} />
 
                         <Route exact path="/productores" component={Productores} />
 
