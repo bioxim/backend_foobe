@@ -10,7 +10,7 @@ function NuevoCliente ({history}) {
 		nombre: '',
 		email: '',
 		password: '',
-		taglineProfile: '',
+		tagline: '',
 		profile: '',
 		telefono: '',
 		empresa: '',
@@ -22,9 +22,10 @@ function NuevoCliente ({history}) {
 		linkedin: '',
 		twitter: '',
 		instagram: '',
-		youtube: '',
-		imagen: ''
+		youtube: ''
 	});
+
+	const [archivo, guardarArchivo] = useState('');
 
 	// leer los datos del formulario
 	const actualizarState = e => {
@@ -37,12 +38,20 @@ function NuevoCliente ({history}) {
 
 	const agregarCliente = e => {
 		e.preventDefault();
-		// enviar petición
-		clienteAxios.post('/crear-cuenta', cliente)
+		
+		const formData = new FormData();
+        formData.append('nombre', cliente.nombre);
+        formData.append('email', cliente.email);
+        formData.append('password', cliente.password);
+        formData.append('tagline', cliente.tagline);
+        formData.append('imagen', archivo);
+
+		clienteAxios.post('/crear-cuenta', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
 			.then(res => {
-				//console.log(res);
-				//cuando en la res vemos errores de mongo
-				//validar si hay errores de mongo(hay muchos pero veo el del mail repetido)
 				if(res.data.code === 11000) {
 					//console.log('Error de duplicado de Mongo')
 					Swal.fire({
@@ -63,14 +72,19 @@ function NuevoCliente ({history}) {
 				history.push('/crear-cuenta');
 			});
 	}
+
+	const leerArchivo = e => {
+            console.log(e.target.files);
+            guardarArchivo(e.target.files[0]);
+        }
 	
 	// validar el formulario
 	const validarCliente = () => {
 		// Destructuring
-		const { nombre, email, password, taglineProfile } = cliente;
+		const { nombre, email, password } = cliente;
 
 		// Revisar que las propiedades del state tengan contenido
-		let valido = !nombre.length || !email.length || !password.length || !taglineProfile.length
+		let valido = !nombre.length || !email.length || !password.length
 
 		// Return true o false
 		return valido;
@@ -132,15 +146,11 @@ function NuevoCliente ({history}) {
 							</div>
 							<div className="col-md-4">
 								<div className="form-group">
-									<label className="font-weight-bold">
-										Tagline 
-									</label>
-									<input 
-										name="taglineProfile"
-										type="text" 
-										className="form-control"
-										onChange={actualizarState} 
-									/>
+									<label>Imagen</label>
+									<input  type="file"  
+				                            name="imagen"
+				                            onChange={leerArchivo} 
+				                    />
 								</div>
 							</div>
 							<div className="col-md-4">
