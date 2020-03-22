@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext, Fragment } from 'react';
 import clienteAxios from '../../config/axios';
 import Spinner from '../layout/Spinner';
-import Calendario from './Calendario';
-import NuevoCalendario from './NuevoCalendario';
+import Moneda from './Moneda';
+import NuevaMoneda from './NuevaMoneda';
 
 import '../dashboard/Dashboard.css';
 import '../layout/auth/Header.css';
@@ -13,9 +13,9 @@ import Pagination from '../Pagination';
 
 import { CRMContext } from '../../context/CRMContext';
 
-const Calendarios = (props) => {
+const Monedas = (props) => {
 
-	const [ calendarios, guardarCalendarios ] = useState([]);
+	const [ productos, guardarProductos ] = useState([]);
 
 	const [loading, setLoading] = useState(false);
   	const [currentPage, setCurrentPage] = useState(1);
@@ -33,26 +33,26 @@ const Calendarios = (props) => {
 			
 			setLoading(true);
 			
-			const calendariosConsulta = await clienteAxios.get('/calendarios');
+			const productosConsulta = await clienteAxios.get('/monedas');
 			
-			guardarCalendarios(calendariosConsulta.data);
+			guardarProductos(productosConsulta.data);
 
 			setLoading(false);
 
 		}
 		consultarAPI();
-	}, [calendarios, loading, guardarAuth]);
+	}, [productos, loading, guardarAuth]);
 
 	// Get current 
 	  const indexOfLastPost = currentPage * postsPerPage;
 	  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-	  const currentPosts = calendarios.slice(indexOfFirstPost, indexOfLastPost);
+	  const currentPosts = productos.slice(indexOfFirstPost, indexOfLastPost);
 
 	  // Change page
 	  const paginate = pageNumber => setCurrentPage(pageNumber);
 
 	// spinner de carga
-	if(!calendarios.length) return <Spinner />
+	if(!productos.length) return <Spinner />
 
 	return (
 		<Fragment>
@@ -68,11 +68,11 @@ const Calendarios = (props) => {
 						<div className="container-fluid">
 							<div className="header">
 								<h1 className="header-title">
-									Programación de las ferias a particioar
+									Monedas para el conversor
 								</h1>
 							</div>
 							<div className="row">
-								<NuevoCalendario />
+								<NuevaMoneda />
 							</div>
 							
 							<div className="row">
@@ -80,11 +80,8 @@ const Calendarios = (props) => {
 									<div className="card mb-3">
 										<div className="card-header">
 											<h5 className="card-title">
-												Listado de las ferias - Admin
+												Lista de monedas
 											</h5>
-											<h6 className="card-subtitle text-muted">
-												Las ferias únicamente para poner en el calendario
-											</h6>
 										</div>
 										<div className="card-body">
 											<div className="react-bootstrap-table">
@@ -92,7 +89,7 @@ const Calendarios = (props) => {
 													<thead>
 														<tr>
 															<th>
-																Imagen
+																Codigo
 															</th>
 															<th>
 																Nombre
@@ -101,25 +98,13 @@ const Calendarios = (props) => {
 																
 															</th>
 															<th>
-																Inicio
-															</th>
-															<th>
-																Final
-															</th>
-															<th>
-																direccion
+																
 															</th>
 															<th>
 																
 															</th>
 															<th>
-																lat
-															</th>
-															<th>
-																long
-															</th>
-															<th>
-																pais
+																Símbolo
 															</th>
 															<th>
 																Editar
@@ -130,9 +115,9 @@ const Calendarios = (props) => {
 														</tr>
 													</thead>
 
-													<Calendario
+													<Moneda
 
-															calendarios={currentPosts} 
+															productos={currentPosts} 
 
 													/>
 
@@ -142,7 +127,7 @@ const Calendarios = (props) => {
 
 										<Pagination
 									        postsPerPage={postsPerPage}
-									        totalPosts={calendarios.length}
+									        totalPosts={productos.length}
 									        paginate={paginate}
 									    />
 
@@ -174,4 +159,4 @@ const Calendarios = (props) => {
 
 }
 
-export default Calendarios;
+export default Monedas;

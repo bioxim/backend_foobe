@@ -145,6 +145,11 @@ const Header = () => {
 										Calendario
 									</Link>
 								</li>
+								<li className="sidebar-item ">
+									<Link to={"/monedas"} className="sidebar-link">
+										Manejo de Monedas
+									</Link>
+								</li>
 							</ul>
 						</div>
 				</li>

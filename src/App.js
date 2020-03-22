@@ -29,6 +29,10 @@ import EditarProducto from './componentes/hs6/EditarProducto';
 import Calendarios from './componentes/calendario/Calendarios';
 import EditarCalendario from './componentes/calendario/EditarCalendario';
 
+/* CRUD DE MONEDAS PARA CONVERSOR */
+import Monedas from './componentes/monedas/Monedas';
+import EditarMoneda from './componentes/monedas/EditarMoneda';
+
 /* FERIAS PARA LIBROS */
 import Ferias from './componentes/ferias/Ferias';
 import EditarFeria from './componentes/ferias/EditarFeria';
@@ -96,6 +100,9 @@ function App() {
                         <Route exact path="/productores" component={Productores} />
 
                         <Route exact path="/manejo-newsletters" component={Newsletters} />
+
+                        <Route exact path="/monedas" component={Monedas} />
+                        <Route exact path="/monedas/editar/:id" component={EditarMoneda} />
                         
                         <Route exact path="/tradeshows" component={Ferias} />
                         <Route exact path="/tradeshows/editar/:id" component={EditarFeria} />
