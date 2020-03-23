@@ -11,18 +11,15 @@ function NuevoCliente ({history}) {
 		email: '',
 		password: '',
 		tagline: '',
-		profile: '',
-		telefono: '',
+		nacimiento: '',
+		actividad: '',
 		empresa: '',
 		direccion: '',
-		ciudad: '',
-		estado: '',
 		pais: '',
 		facebook: '',
 		linkedin: '',
 		twitter: '',
-		instagram: '',
-		youtube: ''
+		instagram: ''
 	});
 
 	const [archivo, guardarArchivo] = useState('');
@@ -44,6 +41,15 @@ function NuevoCliente ({history}) {
         formData.append('email', cliente.email);
         formData.append('password', cliente.password);
         formData.append('tagline', cliente.tagline);
+        formData.append('nacimiento', cliente.nacimiento);
+        formData.append('actividad', cliente.actividad);
+        formData.append('linkedin', cliente.linkedin);
+        formData.append('facebook', cliente.facebook);
+        formData.append('twitter', cliente.twitter);
+        formData.append('instagram', cliente.instagram);
+        formData.append('empresa', cliente.empresa);
+        formData.append('direccion', cliente.direccion);
+        formData.append('pais', cliente.pais);
         formData.append('imagen', archivo);
 
 		clienteAxios.post('/crear-cuenta', formData, {
