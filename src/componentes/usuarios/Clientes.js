@@ -157,6 +157,9 @@ const Clientes = ({history}) => {
 																email
 															</th>
 															<th>
+																detalles
+															</th>
+															<th>
 																Eliminar
 															</th>
 														</tr>

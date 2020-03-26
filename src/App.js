@@ -55,6 +55,7 @@ import Usuarios from './componentes/usuarios/Usuarios';
 
 /* USUARIOS CLIENTES */
 import Clientes from './componentes/usuarios/Clientes';
+import EditarCliente from './componentes/usuarios/EditarCliente';
 
 // Routing
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -119,6 +120,7 @@ function App() {
 
                         <Route exact path="/crear-admin" component={Usuarios} />
                         <Route exact path="/crear-cuenta" component={Clientes} />
+                        <Route exact path="/clientes/editar/:id" component={EditarCliente} />
 
         			</Switch>
         		</main>

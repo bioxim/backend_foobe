@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 
@@ -46,6 +47,11 @@ const Cliente = ({clientes}) => {
 					</td>
 					<td>
 						{cliente.email}
+					</td>
+					<td>
+						<Link to={`/clientes/editar/${cliente._id}`} className="mr-1 mb-1 btn btn-success text-white">
+							<i className="fas fa-plus"></i>
+						</Link>
 					</td>
 					<td>
 						<button  
