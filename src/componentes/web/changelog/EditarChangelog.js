@@ -48,7 +48,6 @@ function EditarChangelog (props) {
 			[e.target.name] : e.target.value
 		})
 
-		//console.log(log);
 	}
 
 	// Envía una petición por Axios para actualizar la sección

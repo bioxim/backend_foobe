@@ -98,7 +98,7 @@ const Documentations = (props) => {
 															<th>
 																titulo
 															</th>
-															<th>
+															<th colspan="6">
 																texto
 															</th>
 															<th>

@@ -4,6 +4,7 @@ import clienteAxios from '../../config/axios';
 import { withRouter } from 'react-router-dom';
 
 import 'moment/locale/es';
+import moment from 'moment';
 
 const NuevaFeria = (props) => {
 
@@ -25,8 +26,8 @@ const NuevaFeria = (props) => {
         // crear un formdata
         const formData = new FormData();
         formData.append('nombre', feria.nombre);
-        formData.append('fechainicial', feria.fechainicial);
-        formData.append('fechafin', feria.fechafin);
+        formData.append('fechainicial', moment(feria.fechainicial));
+        formData.append('fechafin', moment(feria.fechafin));
         formData.append('tipo', feria.tipo);
         formData.append('categoria', feria.categoria);
         formData.append('imagen', archivo);

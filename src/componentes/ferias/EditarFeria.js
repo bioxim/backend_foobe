@@ -7,6 +7,7 @@ import Spinner from '../layout/Spinner';
 import { CRMContext } from '../../context/CRMContext';
 
 import 'moment/locale/es';
+import moment from 'moment';
 
 function EditarFeria(props) {
 
@@ -47,8 +48,8 @@ function EditarFeria(props) {
         // crear un formdata
         const formData = new FormData();
         formData.append('nombre', feria.nombre);
-        formData.append('fechainicial', feria.fechainicial);
-        formData.append('fechafin', feria.fechafin);
+        formData.append('fechainicial', moment(feria.fechainicial));
+        formData.append('fechafin', moment(feria.fechafin));
         formData.append('tipo', feria.tipo);
         formData.append('categoria', feria.categoria);
         formData.append('imagen', archivo);

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../../config/axios';
+import Parser from 'html-react-parser';
 
 const Documentation = ({docs}) => {
 
@@ -51,8 +52,8 @@ const Documentation = ({docs}) => {
 					<td>
 						{doc.titulo}
 					</td>
-					<td>
-						{doc.texto}
+					<td colspan="6">
+						{Parser(doc.texto)}
 					</td>
 					<td>
 						<Link to={`/doc/editar/${doc._id}`} className="mr-1 mb-1 btn btn-warning text-white font-weight-bold">

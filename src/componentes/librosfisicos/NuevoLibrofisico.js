@@ -3,6 +3,8 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 import { withRouter } from 'react-router-dom';
 
+import moment from 'moment';
+
 const NuevoLibrofisico = (props) => {
 
 	const [librof, guardarLibrof] = useState({
@@ -35,7 +37,7 @@ const NuevoLibrofisico = (props) => {
         // crear un formdata
         const formData = new FormData();
         formData.append('nombre', librof.nombre);
-        formData.append('fecha', librof.fecha);
+        formData.append('fecha', moment(librof.fecha));
         formData.append('contactos', librof.contactos);
         formData.append('pais', librof.pais);
         formData.append('producto', librof.producto);

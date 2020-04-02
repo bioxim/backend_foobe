@@ -18,8 +18,6 @@ function NuevoChangelog ({history}) {
 			...log,
 			[e.target.name] : e.target.value
 		})
-
-		console.log(log);
 	}
 
 	// Añade en la REST API un contenido nuevo

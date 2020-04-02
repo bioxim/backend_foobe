@@ -4,6 +4,7 @@ import clienteAxios from '../../config/axios';
 import { withRouter } from 'react-router-dom';
 
 import 'moment/locale/es';
+import moment from 'moment';
 
 const NuevoCalendario = (props) => {
 
@@ -27,8 +28,8 @@ const NuevoCalendario = (props) => {
         const formData = new FormData();
         formData.append('nombre', feria.nombre);
         formData.append('fechainicial', feria.fechainicial);
-        formData.append('fechafin', feria.fechafin);
-        formData.append('direccion', feria.direccion);
+        formData.append('fechafin', moment(feria.fechafin));
+        formData.append('direccion', moment(feria.direccion));
         formData.append('lat', feria.lat);
         formData.append('long', feria.long);
         formData.append('pais', feria.pais);

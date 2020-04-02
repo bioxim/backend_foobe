@@ -6,6 +6,8 @@ import Spinner from '../layout/Spinner';
 
 import { CRMContext } from '../../context/CRMContext';
 
+import moment from 'moment';
+
 function EditarLibrofisico(props) {
 
 	const { id } = props.match.params;
@@ -57,7 +59,7 @@ function EditarLibrofisico(props) {
         // crear un formdata
         const formData = new FormData();
         formData.append('nombre', librof.nombre);
-        formData.append('fecha', librof.fecha);
+        formData.append('fecha', moment(librof.fecha));
         formData.append('contactos', librof.contactos);
         formData.append('pais', librof.pais);
         formData.append('producto', librof.producto);
