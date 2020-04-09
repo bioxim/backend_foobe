@@ -23,7 +23,7 @@ function NuevoChangelog ({history}) {
 	// Añade en la REST API un contenido nuevo
 	const agregarChangelog = e => {
 		e.preventDefault();
-		// enviar petición
+
 		clienteAxios.post('/changelog', log)
 			.then(res => {
 				console.log(res);

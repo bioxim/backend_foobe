@@ -3,6 +3,9 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../../config/axios';
 import { withRouter } from 'react-router-dom';
 import Spinner from '../../layout/Spinner';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import Parser from 'html-react-parser';
 
 import { CRMContext } from '../../../context/CRMContext';
 
@@ -18,12 +21,13 @@ function EditarDocumentation(props) {
 	}
 
 	const [doc, guardarDoc] = useState({
-		titulo: '',
-		texto: ''
+		titulo: ''
 	});
 
 	// archivo = state, guardarArchivo = setState
 	const [archivo, guardarArchivo] = useState('');
+
+	const [texto, guardarTexto] = useState('');
 
 	// cuando el componente carga
     useEffect(() => {
@@ -42,7 +46,7 @@ function EditarDocumentation(props) {
         // crear un formdata
         const formData = new FormData();
         formData.append('titulo', doc.titulo);
-        formData.append('texto', doc.texto);
+        formData.append('texto', texto);
         formData.append('imagen', archivo);
 
         // almacenarlo en la BD
@@ -90,8 +94,13 @@ function EditarDocumentation(props) {
         guardarArchivo( e.target.files[0] );
     }
 
+    const leerTexto = texto => {
+            //console.log(e.target.files);
+            guardarTexto(texto);
+    }
+
     // extraer los valores del state
-    const {titulo, imagen, texto } = doc;
+    const {titulo, imagen } = doc;
 
     if(!doc) return <Spinner />
 
@@ -128,16 +137,11 @@ function EditarDocumentation(props) {
 							<div className="col-md-8">
 								<div className="form-group">
 									<label>Texto descriptivo</label>
-									<textarea 
-											className="form-control"
-											name="texto" 
-											placeholder="Descripción" 
-											type="text"
-											onChange={leerInformacionDoc}
-											rows="5"
-											defaultValue={texto}
-									>
-									</textarea>
+									<ReactQuill 
+										theme="snow"
+										value={texto}
+										onChange={leerTexto}
+									/>
 								</div>
 							</div>
 						</div>

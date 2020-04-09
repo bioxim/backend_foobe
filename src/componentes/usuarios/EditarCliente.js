@@ -27,6 +27,7 @@ function EditarCliente(props) {
 		facebook: '',
 		instagram: '',
 		empresa: '',
+		website: '',
 		direccion: ''
 	});
 
@@ -54,6 +55,7 @@ function EditarCliente(props) {
         formData.append('facebook', miembro.facebook);
         formData.append('instagram', miembro.instagram);
         formData.append('empresa', miembro.empresa);
+        formData.append('website', miembro.website);
         formData.append('direccion', miembro.direccion);
         formData.append('imagen', archivo);
 
@@ -100,7 +102,7 @@ function EditarCliente(props) {
         guardarArchivo( e.target.files[0] );
     }
 
-    const { nombre, tagline, nacimiento, imagen, actividad, linkedin, twitter, facebook, instagram, empresa, direccion, pais } = miembro;
+    const { nombre, tagline, nacimiento, imagen, actividad, linkedin, twitter, facebook, instagram, empresa, direccion, pais, website } = miembro;
 
     if(!miembro) return <Spinner />
 
@@ -155,7 +157,11 @@ function EditarCliente(props) {
 							<div className="col-md-4">
 								<div className="form-group">
 									<label>
-										Empresa
+										Empresa - 
+										{
+											website ? 
+											website : null
+										}
 									</label>
 									<input 
 										name="empresa" 

@@ -54,7 +54,6 @@ function EditarChangelog (props) {
 	const actualizarChangelog = e => {
 		e.preventDefault();
 
-		// enviar petición por axios
 		clienteAxios.put(`/changelog/${log._id}`, log)
 			.then(res => {
 				//console.log(res);

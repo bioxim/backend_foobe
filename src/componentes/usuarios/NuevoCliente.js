@@ -14,6 +14,7 @@ function NuevoCliente ({history}) {
 		nacimiento: '',
 		actividad: '',
 		empresa: '',
+		website: '',
 		direccion: '',
 		pais: '',
 		facebook: '',
@@ -48,6 +49,7 @@ function NuevoCliente ({history}) {
         formData.append('twitter', cliente.twitter);
         formData.append('instagram', cliente.instagram);
         formData.append('empresa', cliente.empresa);
+        formData.append('website', cliente.website);
         formData.append('direccion', cliente.direccion);
         formData.append('pais', cliente.pais);
         formData.append('imagen', archivo);

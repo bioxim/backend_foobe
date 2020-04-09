@@ -27,9 +27,9 @@ const NuevoCalendario = (props) => {
         // crear un formdata
         const formData = new FormData();
         formData.append('nombre', feria.nombre);
-        formData.append('fechainicial', feria.fechainicial);
+        formData.append('fechainicial', moment(feria.fechainicial));
         formData.append('fechafin', moment(feria.fechafin));
-        formData.append('direccion', moment(feria.direccion));
+        formData.append('direccion', feria.direccion);
         formData.append('lat', feria.lat);
         formData.append('long', feria.long);
         formData.append('pais', feria.pais);
