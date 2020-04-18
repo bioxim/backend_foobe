@@ -6,7 +6,8 @@ import { withRouter } from 'react-router-dom';
 function FormNuevoContenido ({history}) {
 
 	const[contenido, guardarContenido] = useState({
-		tagline: ''
+		tagline: '',
+		taglineEsp: ''
 	});
 
 	// leer los datos del formulario
@@ -76,13 +77,27 @@ function FormNuevoContenido ({history}) {
 						onSubmit={agregarContenido}
 					>
 						<div className="form-row">
-							<div className="col-md-8">
+							<div className="col-md-4">
 								<div className="form-group">
 									<label className="font-weight-bold">
 										Breve descripción para incorporar en el home (en inglés) 
 									</label>
 									<input 
 										name="tagline"
+										type="text" 
+										className="form-control"
+										onChange={actualizarState} 
+									/>
+								</div>
+							</div>
+
+							<div className="col-md-4">
+								<div className="form-group">
+									<label className="font-weight-bold">
+										Breve descripción para incorporar en el home ESPAÑOL
+									</label>
+									<input 
+										name="taglineEsp"
 										type="text" 
 										className="form-control"
 										onChange={actualizarState} 

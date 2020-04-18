@@ -17,7 +17,8 @@ function EditarContenido (props) {
 	}
 
 	const[contenido, datosContenido] = useState({
-		tagline: ''
+		tagline: '',
+		taglineEsp: ''
 	});
 
 	// useEffect, cuando el componente carga
@@ -99,7 +100,7 @@ function EditarContenido (props) {
 						onSubmit={actualizarContenido}
 					>
 						<div className="form-row">
-							<div className="col-md-8">
+							<div className="col-md-4">
 								<div className="form-group">
 									<label className="font-weight-bold">
 										Edite breve descripción para incorporar en el home (en inglés) 
@@ -110,6 +111,21 @@ function EditarContenido (props) {
 										className="form-control" 
 										onChange={actualizarState}
 		                    			value={contenido.tagline}
+									/>
+								</div>
+							</div>
+
+							<div className="col-md-4">
+								<div className="form-group">
+									<label className="font-weight-bold">
+										Edite breve descripción para incorporar en el home ESPAÑOL
+									</label>
+									<input 
+										name="taglineEsp"
+										type="text" 
+										className="form-control" 
+										onChange={actualizarState}
+		                    			value={contenido.taglineEsp}
 									/>
 								</div>
 							</div>

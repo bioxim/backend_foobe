@@ -21,13 +21,15 @@ function EditarDocumentation(props) {
 	}
 
 	const [doc, guardarDoc] = useState({
-		titulo: ''
+		titulo: '',
+		tituloEsp: ''
 	});
 
 	// archivo = state, guardarArchivo = setState
 	const [archivo, guardarArchivo] = useState('');
 
 	const [texto, guardarTexto] = useState('');
+	const [textoEsp, guardarTextoEsp] = useState('');
 
 	// cuando el componente carga
     useEffect(() => {
@@ -46,7 +48,9 @@ function EditarDocumentation(props) {
         // crear un formdata
         const formData = new FormData();
         formData.append('titulo', doc.titulo);
+        formData.append('tituloEsp', doc.tituloEsp);
         formData.append('texto', texto);
+        formData.append('textoEsp', textoEsp);
         formData.append('imagen', archivo);
 
         // almacenarlo en la BD
@@ -99,8 +103,13 @@ function EditarDocumentation(props) {
             guardarTexto(texto);
     }
 
+    const leerTextoEsp = textoEsp => {
+            //console.log(e.target.files);
+            guardarTextoEsp(textoEsp);
+    }
+
     // extraer los valores del state
-    const {titulo, imagen } = doc;
+    const {titulo, tituloEsp, imagen } = doc;
 
     if(!doc) return <Spinner />
 
@@ -119,7 +128,7 @@ function EditarDocumentation(props) {
 						onSubmit={editarDoc}
 					>
 						<div className="form-row">
-							<div className="col-md-4">
+							<div className="col-md-3">
 								<div className="form-group">
 									<label>
 										Título
@@ -134,7 +143,22 @@ function EditarDocumentation(props) {
 									/>
 								</div>
 							</div>
-							<div className="col-md-8">
+							<div className="col-md-3">
+								<div className="form-group">
+									<label>
+										Título Español
+									</label>
+									<input 
+										name="tituloEsp" 
+										placeholder="Título de la sección" 
+										type="text" 
+										className="form-control"
+										onChange={leerInformacionDoc}
+										defaultValue={tituloEsp}
+									/>
+								</div>
+							</div>
+							<div className="col-md-6">
 								<div className="form-group">
 									<label>Texto descriptivo</label>
 									<ReactQuill 
@@ -146,7 +170,17 @@ function EditarDocumentation(props) {
 							</div>
 						</div>
 						<div className="form-row">
-							<div className="col-md-8">
+							<div className="col-md-5">
+								<div className="form-group">
+									<label>Texto descriptivo en Español</label>
+									<ReactQuill 
+										theme="snow"
+										value={textoEsp}
+										onChange={leerTextoEsp}
+									/>
+								</div>
+							</div>
+							<div className="col-md-5">
 								<div className="form-group">
 									{ imagen ? (
 					                        <img src={`${process.env.REACT_APP_BACKEND_URL}/${imagen}`} alt="imagen" width="150" className="img-fluid rounded-circle pb-3" />

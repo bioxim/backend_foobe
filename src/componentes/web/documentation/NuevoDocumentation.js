@@ -8,13 +8,15 @@ import 'react-quill/dist/quill.snow.css';
 const NuevoDocumentation = (props) => {
 
 	const [doc, guardarDoc] = useState({
-		titulo: ''
+		titulo: '',
+		tituloEsp: ''
 	});
 	
     // archivo = state, guardarArchivo = setState
 	const [archivo, guardarArchivo] = useState('');
 
 	const [texto, guardarTexto] = useState('');
+	const [textoEsp, guardarTextoEsp] = useState('');
 
     const agregarDoc = async e => {
         e.preventDefault();
@@ -22,7 +24,9 @@ const NuevoDocumentation = (props) => {
         // crear un formdata
         const formData = new FormData();
         formData.append('titulo', doc.titulo);
+        formData.append('tituloEsp', doc.tituloEsp);
         formData.append('texto', texto);
+        formData.append('textoEsp', textoEsp);
         formData.append('imagen', archivo);
 
         // almacenarlo en la BD
@@ -76,6 +80,11 @@ const NuevoDocumentation = (props) => {
             guardarTexto(texto);
         }
 
+        const leerTextoEsp = textoEsp => {
+            //console.log(e.target.files);
+            guardarTextoEsp(textoEsp);
+        }
+
 	return (
 		<div className="col">
 			<div className="card">
@@ -91,7 +100,7 @@ const NuevoDocumentation = (props) => {
 						onSubmit={agregarDoc}
 					>
 						<div className="form-row">
-							<div className="col-md-4">
+							<div className="col-md-3">
 								<div className="form-group">
 									<label>
 										Título
@@ -105,7 +114,21 @@ const NuevoDocumentation = (props) => {
 									/>
 								</div>
 							</div>
-							<div className="col-md-8">
+							<div className="col-md-3">
+								<div className="form-group">
+									<label>
+										Título Español
+									</label>
+									<input 
+										name="tituloEsp" 
+										placeholder="Título de la sección" 
+										type="text" 
+										className="form-control"
+										onChange={leerInformacionDoc}
+									/>
+								</div>
+							</div>
+							<div className="col-md-6">
 								<div className="form-group">
 									<label>Texto descriptivo</label>
 									<ReactQuill 
@@ -117,6 +140,16 @@ const NuevoDocumentation = (props) => {
 							</div>
 						</div>
 						<div className="form-row">
+							<div className="col-md-6">
+								<div className="form-group">
+									<label>Texto descriptivo en español</label>
+									<ReactQuill 
+										theme="snow"
+										value={textoEsp}
+										onChange={leerTextoEsp}
+									/>
+								</div>
+							</div>
 							<div className="col-md-4">
 								<div className="form-group">
 									<label>Imagen</label>

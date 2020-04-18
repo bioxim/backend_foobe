@@ -9,7 +9,8 @@ function NuevoChangelog ({history}) {
 
 	const[log, guardarChangelog] = useState({
 		fecha: '',
-		changelog: ''
+		changelog: '',
+		changelogEsp: ''
 	});
 
 	// leer los datos del formulario
@@ -77,13 +78,26 @@ function NuevoChangelog ({history}) {
 						onSubmit={agregarChangelog}
 					>
 						<div className="form-row">
-							<div className="col-md-6">
+							<div className="col-md-3">
 								<div className="form-group">
 									<label className="font-weight-bold">
 										Texto del log
 									</label>
 									<input 
 										name="changelog"
+										type="text" 
+										className="form-control"
+										onChange={actualizarState} 
+									/>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="form-group">
+									<label className="font-weight-bold">
+										Texto del log (español)
+									</label>
+									<input 
+										name="changelogEsp"
 										type="text" 
 										className="form-control"
 										onChange={actualizarState} 

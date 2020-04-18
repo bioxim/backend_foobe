@@ -21,7 +21,8 @@ function EditarChangelog (props) {
 
 	const [log, datosLogs] = useState({
 		fecha: '',
-		changelog: ''
+		changelog: '',
+		changelogEsp: ''
 	});
 
 	
@@ -103,7 +104,7 @@ function EditarChangelog (props) {
 						onSubmit={actualizarChangelog}
 					>
 						<div className="form-row">
-							<div className="col-md-6">
+							<div className="col-md-3">
 								<div className="form-group">
 									<label className="font-weight-bold">
 										Edite el log
@@ -114,6 +115,20 @@ function EditarChangelog (props) {
 										className="form-control" 
 										onChange={actualizarState}
 		                    			value={log.changelog}
+									/>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="form-group">
+									<label className="font-weight-bold">
+										Edite el log (español)
+									</label>
+									<input 
+										name="changelogEsp"
+										type="text" 
+										className="form-control" 
+										onChange={actualizarState}
+		                    			value={log.changelogEsp}
 									/>
 								</div>
 							</div>
